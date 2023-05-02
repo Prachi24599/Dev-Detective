@@ -38,3 +38,10 @@ const page = get("page");
 const twitter = get("twitter");
 const company = get("company");
 let darkMode = false;
+
+//Event Listeners
+btnsubmit.addEventListener("click", function () {
+  if (input.value != "") {
+    getUserData(url + input.value);
+  }
+});
