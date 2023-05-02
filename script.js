@@ -186,7 +186,7 @@ function init() {
   }
 
   //by default, pranaygupta ki info show krre h UI pr
-  getUserData(url + "thepranaygupta");
+  getUserData(url + "prachi24599");
 }
 
 init();
