@@ -52,3 +52,15 @@ btnmode.addEventListener("click", function () {
     darkModeProperties();
   }
 });
+
+input.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    if (input.value != "") {
+      getUserData(url + input.value);
+    }
+  }
+});
+
+input.addEventListener("input", function () {
+  noresults.style.display = "none";
+});
