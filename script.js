@@ -161,3 +161,32 @@ function lightModeProperties() {
   darkMode = false;
   localStorage.setItem("dark-mode", false);
 }
+
+//INITIALISE UI
+function init() {
+  //initialise dark-mode variable to false;
+  //darkMode = true -> dark mode enable karna h
+  //darMode = false -> light mode enable karna h
+  darkMode = false;
+
+  // const prefersDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const value = localStorage.getItem("dark-mode");
+
+  if (value === null) {
+    console.log("null k andar");
+    localStorage.setItem("dark-mode", darkMode);
+    lightModeProperties();
+  } else if (value == "true") {
+    console.log("truer k andar");
+    darkModeProperties();
+  } else if (value == "false") {
+    console.log("false k andar");
+    lightModeProperties();
+  }
+
+  //by default, pranaygupta ki info show krre h UI pr
+  getUserData(url + "thepranaygupta");
+}
+
+init();
