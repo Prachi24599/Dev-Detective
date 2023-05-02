@@ -45,3 +45,10 @@ btnsubmit.addEventListener("click", function () {
     getUserData(url + input.value);
   }
 });
+btnmode.addEventListener("click", function () {
+  if (darkMode) {
+    lightModeProperties();
+  } else {
+    darkModeProperties();
+  }
+});
