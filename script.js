@@ -45,6 +45,7 @@ btnsubmit.addEventListener("click", function () {
     getUserData(url + input.value);
   }
 });
+
 btnmode.addEventListener("click", function () {
   if (darkMode) {
     lightModeProperties();
@@ -64,3 +65,26 @@ input.addEventListener("keydown", function (e) {
 input.addEventListener("input", function () {
   noresults.style.display = "none";
 });
+
+//Functions
+
+//API CALL
+function getUserData(gitUrl) {
+  fetch(gitUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      updateProfile(data);
+    })
+    .catch((error) => {
+      throw error;
+    });
+
+  // try {
+  //   const response = await fetch(gitUrl);
+  //   const data = response.json();
+  //   updateProfile(data);
+  // } catch (error) {
+  //   throw error;
+  // }
+}
