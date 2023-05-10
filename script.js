@@ -73,7 +73,7 @@ function getUserData(gitUrl) {
   fetch(gitUrl)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       updateProfile(data);
     })
     .catch((error) => {
@@ -94,7 +94,7 @@ function updateProfile(data) {
   if (data.message !== "Not Found") {
     noresults.style.display = "none";
     function checkNull(param1, param2) {
-      if (param1 === "" || param2 === null) {
+      if (param1 === "" || param1 === null) {
         param2.style.opacity = 0.5;
         param2.previousElementSibling.style.opacity = 0.5;
         return false;
@@ -106,10 +106,11 @@ function updateProfile(data) {
     userName.innerText = data.name === null ? data.login : data.name;
     user.innerText = `@${data.login}`;
     user.href = `${data.html_url}`;
-    datesegments = data.created_at.split("T").shift().split("-");
+    let datesegments = data.created_at.split("T").shift().split("-");
+    // console.log(datesegments);
     date.innerText = `Joined ${datesegments[2]} ${
       months[datesegments[1] - 1]
-    } ${datasegments[0]}`;
+    } ${datesegments[0]}`;
     bio.innerText =
       data.bio == null ? "This profile has no bio" : `${data.bio}`;
     repos.innerText = `${data.public_repos}`;
@@ -131,6 +132,8 @@ function updateProfile(data) {
       : "Not Available";
     searchbar.classList.toggle("active");
     profilecontainer.classList.toggle("active");
+  } else {
+    noresults.style.display = "block";
   }
 }
 
@@ -174,18 +177,14 @@ function init() {
   const value = localStorage.getItem("dark-mode");
 
   if (value === null) {
-    console.log("null k andar");
     localStorage.setItem("dark-mode", darkMode);
     lightModeProperties();
   } else if (value == "true") {
-    console.log("truer k andar");
     darkModeProperties();
   } else if (value == "false") {
-    console.log("false k andar");
     lightModeProperties();
   }
-
-  //by default, pranaygupta ki info show krre h UI pr
+  //default profile to show
   getUserData(url + "prachi24599");
 }
 
